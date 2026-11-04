@@ -1,0 +1,31 @@
+{
+  "_aciklama": "Tut/sat degerlendirmesinin esikleri. Bunlar ANALITIK TASLAKTIR; sizin onayladiginiz yatirim politikasi degildir. Degistirip 'durum' alanini ONAYLANDI yapabilirsiniz.",
+  "durum": "TASLAK",
+  "tolerans_mutlak": 0.05,
+  "tolerans_goreli": 0.25,
+  "trend_uyari": -0.05,
+  "dusus_inceleme": -0.20,
+  "faktor_geri_kalma_puan": 0.10,
+  "makas_uyari_yuzde": 1.0,
+  "min_emir_eur": 25,
+  "nakit_hedefi": 0.0,
+  "ucits_kontrolu": false,
+  "tarama": {
+    "min_sharpe": 0.5,
+    "max_makas_yuzde": 0.5,
+    "max_korelasyon": 0.85,
+    "ust_aday_sayisi": 3,
+    "agirliklar": {
+      "perf_6m": 0.25,
+      "perf_1y": 0.25,
+      "sharpe": 0.25,
+      "trend_gap": 0.15,
+      "corr_to_portfolio": 0.10
+    }
+  },
+  "yedek_saklama": {
+    "gunluk": 7,
+    "haftalik": 4,
+    "aylik": 12
+  }
+}

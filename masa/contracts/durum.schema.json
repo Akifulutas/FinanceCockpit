@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DurumResponse",
+  "type": "object",
+  "required": ["schema_version", "ok", "database_path", "integrity", "queue"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "ok": { "type": "boolean" },
+    "database_path": { "type": "string" },
+    "integrity": {
+      "type": "object",
+      "required": ["schema_version", "trigger_count", "snapshots", "chain_tip_status", "ok"],
+      "properties": {
+        "schema_version": { "type": "integer" },
+        "trigger_count": { "type": "integer" },
+        "snapshots": { "type": "integer" },
+        "audit_events": { "type": "integer" },
+        "chain_tip_status": { "type": "string" },
+        "ok": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "capabilities": {
+      "type": ["object", "null"]
+    },
+    "queue": {
+      "type": "object",
+      "required": ["pending_count", "recent_jobs"],
+      "properties": {
+        "pending_count": { "type": "integer" },
+        "recent_jobs": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

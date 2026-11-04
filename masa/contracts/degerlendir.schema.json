@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DegerlendirResponse",
+  "type": "object",
+  "required": ["schema_version", "assessments"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "run_id": { "type": ["string", "null"] },
+    "warning": { "type": ["string", "null"] },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["isin", "name", "label", "reasons", "notes"],
+        "properties": {
+          "isin": { "type": "string" },
+          "name": { "type": "string" },
+          "label": { "type": "string" },
+          "reasons": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "notes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

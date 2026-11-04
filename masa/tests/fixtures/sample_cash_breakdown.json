@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "command": "broker.cash-breakdown",
+  "data": {
+    "account_id": "ACC_TEST_MASKED_01",
+    "portfolio_id": "PORT_TEST_MASKED_01",
+    "resolution": {
+      "account": "selected_context",
+      "portfolio": "selected_context"
+    },
+    "result": {
+      "account_id": "ACC_TEST_MASKED_01",
+      "available_credit_line": 0,
+      "available_for_derivatives": 0,
+      "buying_power": 1250.50,
+      "buying_power_without_credit": 1250.50,
+      "cash_balance": 1250.50,
+      "derivatives_buying_power": 0,
+      "loaned": 0,
+      "pending_buy_orders_amount": 0,
+      "portfolio_id": "PORT_TEST_MASKED_01",
+      "possible_taxes": 0
+    }
+  }
+}

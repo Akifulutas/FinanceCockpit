@@ -1,0 +1,43 @@
+[project]
+name = "masa"
+version = "0.1.0"
+description = "ETF Yatırım Masası — Faz 0 ve Faz 1 Çekirdek Uygulaması"
+readme = "README.md"
+authors = [
+    { name = "Akif Ulutas" }
+]
+
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "edgartools>=5.62.1",
+    "exchange-calendars>=4.10.0",
+    "jsonschema>=4.26.0",
+    "openpyxl>=3.1.5",
+    "pydantic>=2.10.0",
+    "quantstats>=0.0.86",
+    "scipy>=1.18.1",
+    "statsmodels>=0.15.0",
+    "trafilatura>=2.3.1",
+]
+
+[project.scripts]
+masa = "masa.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+norecursedirs = ["arsiv", "archive", "var", ".venv"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100

@@ -1,0 +1,9 @@
+{
+  "_aciklama": "TradingAgents model dağılımı. Hızlı katman (analistler, boğa/ayı tartışması, trader, risk tartışması: çağrıların ~%90'ı) sembol bazında ağırlıklı sırayla sağlayıcılar arasında paylaştırılır. Derin katman (araştırma ve portföy yöneticisi: sembol başına ~2 çağrı) sabittir. Bir sağlayıcı limit/kota hatası verirse o sembol bir kez diğer sağlayıcıyla yeniden denenir.",
+  "hizli_katman": [
+    {"saglayici": "google", "model": "gemini-3.8-flash", "agirlik": 1},
+    {"saglayici": "chatgpt", "model": "gpt-6.1-sol", "agirlik": 1}
+  ],
+  "derin_katman": {"saglayici": "chatgpt", "model": "gpt-6.1-sol"},
+  "limit_hatasinda_yedege_gec": true
+}

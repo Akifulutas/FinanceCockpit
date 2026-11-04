@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SchedulerStatusResponse",
+  "type": "object",
+  "required": ["schema_version", "agents"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "description", "schedule", "installed", "loaded"],
+        "properties": {
+          "label": { "type": "string" },
+          "description": { "type": "string" },
+          "schedule": { "type": "string" },
+          "installed": { "type": "boolean" },
+          "loaded": { "type": "boolean" },
+          "last_exit_code": { "type": ["integer", "null"] },
+          "plist_path": { "type": ["string", "null"] },
+          "log_lines": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

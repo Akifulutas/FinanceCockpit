@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GirisResponse",
+  "type": "object",
+  "required": ["schema_version", "active", "session_ok", "reader_path"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "active": {},
+    "session_ok": {},
+    "reader_path": { "type": "string" },
+    "account_info": {
+      "type": ["object", "null"],
+      "properties": {
+        "account_id": { "type": ["string", "null"] },
+        "email": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

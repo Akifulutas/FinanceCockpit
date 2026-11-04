@@ -1,0 +1,4 @@
+interface:
+  display_name: "ETF Yatırım Masası"
+  short_description: "Uzun vadeli ETF araştırması ve düzenli tez kontrolü"
+  default_prompt: "$etf-yatirim-masasi Bugünkü ETF özetini hazırla; uzun vadeli tezleri etkileyen değişiklikleri kaynaklarıyla açıkla."

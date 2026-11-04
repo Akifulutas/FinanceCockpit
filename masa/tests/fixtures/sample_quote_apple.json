@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "command": "broker.quote",
+  "data": {
+    "account_id": "ACC_TEST_MASKED_01",
+    "portfolio_id": "PORT_TEST_MASKED_01",
+    "resolution": {
+      "account": "selected_context",
+      "portfolio": "selected_context"
+    },
+    "result": {
+      "account_id": "ACC_TEST_MASKED_01",
+      "isin": "US0378331005",
+      "name": "Apple Inc.",
+      "portfolio_id": "PORT_TEST_MASKED_01",
+      "quote_ask_price": 309.85,
+      "quote_bid_price": 309.65,
+      "quote_currency": "EUR",
+      "quote_is_outdated": false,
+      "quote_mid_price": 309.75,
+      "quote_performance_date": "2026-10-30",
+      "quote_performances": [
+        {"performance": -0.013, "simple_absolute_return": -4.075, "timeframe": "INTRADAY"}
+      ],
+      "quote_tick_id": "US0378331005",
+      "quote_timestamp_utc": "2026-10-30T09:30:07.506Z",
+      "security_id": "US0378331005",
+      "security_type": "STOCK"
+    }
+  }
+}

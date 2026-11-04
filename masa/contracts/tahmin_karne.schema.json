@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TahminKarneResponse",
+  "type": "object",
+  "required": ["schema_version", "total_forecasts", "settled_count", "pending_count", "hit_rate_pct", "is_small_sample"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "total_forecasts": { "type": "integer" },
+    "settled_count": { "type": "integer" },
+    "pending_count": { "type": "integer" },
+    "hit_rate_pct": { "type": "string" },
+    "etf_hit_rate_pct": { "type": ["string", "null"] },
+    "stock_hit_rate_pct": { "type": ["string", "null"] },
+    "mape_pct": { "type": "string" },
+    "mae_eur": { "type": "string" },
+    "mpe_pct": { "type": "string" },
+    "is_small_sample": { "type": "boolean" },
+    "warning_message": { "type": ["string", "null"] },
+    "baseline_flat_hit_rate_pct": { "type": ["string", "null"] },
+    "baseline_yesterday_hit_rate_pct": { "type": ["string", "null"] },
+    "beats_baselines": { "type": ["boolean", "null"] },
+    "baseline_warning": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

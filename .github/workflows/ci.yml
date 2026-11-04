@@ -1,0 +1,63 @@
+name: FinanceCockpit CI & Security Audit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  security-gitleaks:
+    name: Gitleaks Secret & PII Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks on Git History & Working Tree
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: .gitleaks.toml
+
+  python-core-tests:
+    name: Python 3.13 Core Engine (masa)
+    runs-on: macos-15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Set up Python 3.13 & Sync Dependencies
+        working-directory: masa
+        run: |
+          uv python install 3.13
+          uv sync
+
+      - name: Run Python Unit, Adversarial & E2E Tests
+        working-directory: masa
+        run: uv run pytest -q
+
+      - name: Verify Demo Database Seeder
+        run: |
+          ./masa/.venv/bin/python scripts/seed_demo_db.py --db-path /tmp/ci_demo.db --force
+
+  macos-swiftui-tests:
+    name: macOS SwiftUI Cockpit (Swift 6)
+    runs-on: macos-15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Swift Package Manager Test Suite
+        working-directory: macos
+        run: swift test

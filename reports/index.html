@@ -1,0 +1,294 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>ETF Yatırım Masası</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1016;--panel:#121b24;--line:#253341;--text:#eef4fa;--muted:#a2b1c0;--accent:#51dbc6;--warn:#ffb454;--danger:#ff8077}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-wrap:break-word}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1240px;margin:auto;padding:0 32px}header{border-bottom:1px solid var(--line);background:#0d151e;position:sticky;top:0;z-index:10}
+.top{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;gap:20px}.brand{font-size:18px;font-weight:700}.brand span{color:var(--accent);padding-right:10px}
+.badge{display:inline-block;border:1px solid #34524e;border-radius:30px;color:#9aebdc;padding:5px 12px;font-size:11px;letter-spacing:.06em;font-weight:600}
+.badge-warn{border-color:#5c4424;color:#ffcf87;background:#24180d}
+nav{display:flex;gap:20px;flex-wrap:wrap;padding-bottom:12px;border-top:1px solid #1a2530;padding-top:10px}nav a{font-size:13px;color:var(--muted);font-weight:500}nav a:hover{color:var(--text)}main{padding:30px 0 50px}
+.eyebrow{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:650;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:8px 0 10px;letter-spacing:-.025em}h2{font-size:20px;margin:0 0 5px;letter-spacing:-.02em}h3{font-size:16px;margin:0 0 8px}h4{font-size:15px;margin:0 0 4px}p{margin:0 0 12px}.intro{max-width:780px;color:var(--muted);font-size:14px}
+.summary{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px;margin:24px 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}.total{background:linear-gradient(115deg,#173b3a,#14232d);border-color:#2c5755}.big{font-size:38px;font-weight:650;letter-spacing:-.04em;line-height:1.2;margin:8px 0}.subbig{font-size:24px;font-weight:600;margin:12px 0}.card p,.card small{font-size:12px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}.section-head p{color:var(--muted);font-size:13px;margin:2px 0 0}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin-top:24px;scroll-margin-top:70px}
+.distribution{height:8px;border-radius:8px;overflow:hidden;display:flex;margin-bottom:20px}.distribution div+div{border-left:2px solid var(--panel)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;margin-bottom:8px}table{width:100%;border-collapse:collapse;min-width:720px}th{text-align:left;font-size:10px;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;padding:0 10px 12px;white-space:nowrap}td{border-top:1px solid var(--line);padding:14px 10px;font-size:13px;vertical-align:middle}td strong{font-weight:600}td small{display:block;color:var(--muted);font-size:11px}.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:2px}
+.col-name{min-width:180px;max-width:260px}.col-isin{min-width:120px;max-width:150px}.col-bench{min-width:160px;max-width:240px}
+.col-ter{min-width:130px;max-width:220px;white-space:normal;text-align:right}.ter-value{display:block;font-size:14px}.note-text{white-space:normal;line-height:1.35;margin-top:4px}
+.col-repl{min-width:140px;max-width:190px}.col-fx{min-width:110px;max-width:150px}.col-ref{min-width:150px;max-width:220px}
+.link-pill{display:inline-block;font-size:11px;padding:3px 8px;border:1px solid var(--line);border-radius:6px;margin-top:4px;color:var(--accent)}
+.link-pill:hover{border-color:var(--accent)}
+.note{font-size:12px;color:var(--muted);padding-top:12px;line-height:1.5}
+.market-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.market-card{background:#0e1620;border:1px solid var(--line);border-radius:12px;padding:18px}.market-card .eyebrow{min-height:30px}.quote{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}.quote span{font-size:11px;font-weight:400;color:var(--muted)}.change{font-size:14px;margin:6px 0}.change span{font-size:11px;color:var(--muted);font-weight:400}.market-card p{font-size:12px;color:var(--muted);margin-bottom:0}.market-card a{font-size:11px;display:inline-block;margin-top:10px}.up{color:#67ddbb}.down{color:#ff9c96}.divider{border-top:1px solid var(--line);margin:10px 0}.empty .quote{color:#688196}.empty{min-height:160px}
+.research-summary-card{background:#0d1620;border:1px solid #233446;border-radius:12px;padding:20px;margin-bottom:20px}
+.facts-list{margin:10px 0 12px 18px;padding:0;font-size:13px}.facts-list li{margin-bottom:6px;color:var(--text)}
+.meta-date{display:block;color:var(--muted);font-size:11px;margin-bottom:12px}
+.macro-inference{background:#13222e;border-left:3px solid var(--accent);padding:10px 14px;font-size:13px;border-radius:0 8px 8px 0;margin-top:10px}
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.fund-research-card{background:#0e1722;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:10px}
+.tag{display:inline-block;font-size:10px;padding:2px 6px;border-radius:4px;background:#182533;color:#89a8c7;margin-left:4px}
+.research-row{font-size:12.5px}.research-row .label{display:block;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}.research-row p{margin:0;line-height:1.5}
+.warning-box{background:#23190e;border-left:3px solid var(--warn);padding:8px 12px;border-radius:0 6px 6px 0}.warning-box .label{color:#ffcf87}
+.check-box{background:#112028;border-left:3px solid #6cd5c2;padding:8px 12px;border-radius:0 6px 6px 0}.check-box .label{color:#9be9db}
+.research-sources{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px;border-top:1px solid #1a2734;margin-top:auto}
+.source-tag{font-size:11px;padding:3px 8px;border-radius:5px;background:#152230;color:var(--accent);display:inline-block}
+.source-tag:hover{background:#1e3245}
+.empty-research{background:#0e1620;border:1px dashed var(--line);padding:24px;border-radius:12px;text-align:center;font-size:13px;color:var(--muted)}
+.lower{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;margin-top:24px}
+.missing>div{border-bottom:1px solid var(--line);padding:14px 0}.missing>div:last-child{border:0}.missing strong{font-size:13px}.missing p{font-size:12px;color:var(--muted);margin:2px 0 0}
+.source{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--text)}.source:last-of-type{border:0}.source small{margin-top:4px}
+footer{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--muted);font-size:11px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}
+button{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:7px;padding:7px 14px;cursor:pointer;font-size:12px;font-weight:500}button:hover{border-color:var(--accent);background:#1a2736}
+@media(max-width:980px){.summary{grid-template-columns:1fr 1fr}.total{grid-column:1/-1}.research-grid{grid-template-columns:1fr}.market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lower{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{padding:0 16px}.top{align-items:flex-start;flex-direction:column;gap:8px}h1{font-size:26px}.summary{grid-template-columns:1fr}.total{grid-column:auto}.panel,.card{padding:16px}.market-grid{grid-template-columns:1fr}.section-head,footer{flex-direction:column;align-items:flex-start}.big{font-size:32px}.table-wrap table{min-width:620px}}
+@media print{
+  :root{color-scheme:light;--bg:#ffffff;--panel:#ffffff;--line:#cbd1d7;--text:#152331;--muted:#4c5966;--accent:#087365;--warn:#8f5b00}
+  body{background:#fff;color:#152331;font-size:12px;line-height:1.45}
+  header{background:#fff;position:static;border-bottom:2px solid #152331}
+  .wrap{padding:0;max-width:none}
+  main{padding-top:12px;padding-bottom:12px}
+  nav,button{display:none}
+  .total,.card,.panel,.market-card,.fund-research-card,.research-summary-card{background:#fff!important;border:1px solid #cbd1d7!important;box-shadow:none!important}
+  .summary{gap:10px;margin:14px 0}
+  .big{font-size:26px;color:#152331}
+  .subbig{font-size:18px;color:#152331}
+  .panel{break-inside:auto;margin-top:16px;padding:14px}
+  .market-card,.missing>div,tr,.source,.fund-research-card,.research-summary-card{break-inside:avoid;page-break-inside:avoid}
+  .lower{display:block}
+  .badge{color:#087365;border-color:#087365}
+  .up,.down{color:var(--text)}
+  a{color:var(--text);text-decoration:none}
+  .tag,.source-tag,.link-pill{border:1px solid #cbd1d7;background:#f6f8fa;color:#152331}
+  .warning-box{background:#fff8ee;border-left:3px solid #b87800}
+  .check-box{background:#f0faf7;border-left:3px solid #087365}
+  .macro-inference{background:#f4f7f9;border-left:3px solid #087365}
+}
+</style></head><body>
+<header><div class="wrap"><div class="top"><div class="brand"><span>◈</span>ETF Yatırım Masası</div><div class="badge">ETF · UZUN VADELİ ARAŞTIRMA</div></div>
+<nav aria-label="Bölümler">
+<a href="#portfoy">Portföy kaydı</a>
+<a href="#dogrulanmis-fonlar">Fon bilgi kaydı</a>
+<a href="#arastirma">Günlük ETF araştırması</a>
+<a href="#piyasa">Piyasa bağlamı</a>
+<a href="#kayit">Eksik kayıtlar</a>
+<a href="#kaynaklar">Fon kaynakları</a>
+</nav></div></header>
+<div class="wrap"><main><div class="eyebrow">KİŞİSEL ETF MASAN</div><h1>Önce kayıt, sonra yorum.</h1>
+<p class="intro">Fon bilgi kayıtları, gönderdiğin ekran kaydı, tarihli piyasa göstergeleri ve kapsamı belirtilmiş maruziyet araştırması. Portföy tutarları gönderdiğin ekran görüntüsüne dayanır; güncel piyasa değeri ve getiri hesaplanmamıştır.</p>
+<div class="summary"><article class="card total"><div class="eyebrow">EKRANDA GÖRÜNEN TOPLAM</div><div class="big">€10.000,00</div><p>Örnek görüntü kaydı · güncel değer hesaplanmadı</p></article>
+<article class="card"><div class="eyebrow">KAYITLI ETF</div><div class="subbig">4 fon</div><p>Resmi ihraççı ve birikimli pay sınıfıyla doğrulanmış</p></article>
+<article class="card"><div class="eyebrow">PORTFÖY GETİRİSİ</div><div class="subbig">Henüz hesaplanamıyor</div><p>Adet, maliyet ve tarihli hareketler eksik</p></article></div>
+
+<section class="panel" id="portfoy"><div class="section-head"><div><h2>Kaydedilen portföy ekranı</h2><p>Yaklaşık ekran tutarları ve görünen fonlar içindeki payları</p></div><span class="badge">EKRAN KAYDI</span></div>
+<div class="distribution" aria-hidden="true"><div style="width:25.00%;background:#51dbc6" title="iShares Core MSCI EM IMI UCITS ETF USD (Acc): 25,00%"></div><div style="width:25.00%;background:#81a6ff" title="iShares Edge MSCI World Momentum Factor UCITS ETF USD (Acc): 25,00%"></div><div style="width:15.00%;background:#dab0f5" title="iShares Edge MSCI World Value Factor UCITS ETF USD (Acc): 15,00%"></div><div style="width:35.00%;background:#e8c17b" title="State Street SPDR MSCI All Country World Investable Market UCITS ETF (Acc): 35,00%"></div></div><div class="table-wrap"><table><thead><tr><th>Fon / maruziyet</th><th>Fon kimliği</th><th class="num">Ekran tutarı ≈</th><th class="num">Pay ≈</th></tr></thead><tbody><tr><td><span class="dot" style="background:#51dbc6"></span><strong>iShares Core MSCI EM IMI UCITS ETF USD (Acc)</strong>
+            <small>Gelişen piyasalar; büyük/orta/küçük şirketler</small></td><td class="mono">IE00BKM4GZ66<small>İsimden eşleşme · broker teyidi bekliyor</small></td>
+            <td class="num">€2.500,00</td><td class="num">25,00%</td></tr><tr><td><span class="dot" style="background:#81a6ff"></span><strong>iShares Edge MSCI World Momentum Factor UCITS ETF USD (Acc)</strong>
+            <small>Gelişmiş piyasalar; momentum faktörü</small></td><td class="mono">IE00BP3QZ825<small>İsimden eşleşme · broker teyidi bekliyor</small></td>
+            <td class="num">€2.500,00</td><td class="num">25,00%</td></tr><tr><td><span class="dot" style="background:#dab0f5"></span><strong>iShares Edge MSCI World Value Factor UCITS ETF USD (Acc)</strong>
+            <small>Gelişmiş piyasalar; value faktörü</small></td><td class="mono">IE00BP3QZB59<small>İsimden eşleşme · broker teyidi bekliyor</small></td>
+            <td class="num">€1.500,00</td><td class="num">15,00%</td></tr><tr><td><span class="dot" style="background:#e8c17b"></span><strong>State Street SPDR MSCI All Country World Investable Market UCITS ETF (Acc)</strong>
+            <small>Küresel hisse; gelişmiş + gelişen piyasalar</small></td><td class="mono">IE00B3YLTY66<small>İsimden eşleşme · broker teyidi bekliyor</small></td>
+            <td class="num">€3.500,00</td><td class="num">35,00%</td></tr></tbody></table></div>
+<p class="note">Yuvarlanmış satır toplamı €10.000,00; ekran başlığıyla fark €0,00. Paylar satır toplamından hesaplanır. Nakit oranı bilinmiyor. Hedef dağılım ve yeniden dengeleme kuralı belirlenmedi.</p></section>
+
+<section class="panel" id="dogrulanmis-fonlar"><div class="section-head"><div><h2>Kaynaklı fon bilgi kaydı</h2><p>Alanlar kaynak kaydından okunur; boş alanlar bilinmiyor demektir</p></div><span class="badge">ÜRÜN BİLGİLERİ</span></div>
+<div class="table-wrap"><table><thead><tr><th>Fon adı / ihraççı</th><th>ISIN / pay sınıfı</th><th>İzlenen endeks</th><th class="num">TER p.a.</th><th>Replikasyon / dağıtım</th><th>Baz döviz / hedge</th><th>Referans işlem hatları</th></tr></thead><tbody><tr>
+            <td class="col-name"><strong>iShares Core MSCI EM IMI UCITS ETF USD (Acc)</strong><small>BlackRock Asset Management Ireland Limited / iShares · Gelişen piyasalar; büyük/orta/küçük şirketler</small></td>
+            <td class="col-isin mono">IE00BKM4GZ66<small>USD (Acc)</small></td>
+            <td class="col-bench">MSCI Emerging Markets Investable Market Index (IMI)</td>
+            <td class="col-ter"><span class="mono ter-value"><strong>%0,18</strong></span><small class="note-text">Resmi ürün kaynağındaki toplam gider oranı (yıllık).</small></td>
+            <td class="col-repl">Physical / Replicated (ihraççı sınıflaması)<small>Birikimli (Accumulating)</small></td>
+            <td class="col-fx">USD<small>Hedge&#x27;siz (Kur koruması yok; gelişen ülke yerel para birimleri ve USD riski taşır)</small></td>
+            <td class="col-ref"><small>IS3N (Deutsche Börse Xetra) · EIMI (London Stock Exchange) · EMIM (London Stock Exchange)</small><a href="https://www.ishares.com/uk/individual/en/products/264659/ishares-msci-emerging-markets-imi-ucits-etf" target="_blank" rel="noopener noreferrer" class="link-pill">Kaynak ↗</a>
+            <small>Belge: tarih belirtilmemiş<br>Erişim: 2026-10-23T19:57:27+02:00</small>
+            <small>Ürün sayfasının genel yayın tarihi belirtilmemiştir; erişim zamanı ayrı kaydedildi. Broker işlem hattı doğrulanmadı.</small></td>
+        </tr><tr>
+            <td class="col-name"><strong>iShares Edge MSCI World Momentum Factor UCITS ETF USD (Acc)</strong><small>BlackRock Asset Management Ireland Limited / iShares · Gelişmiş piyasalar; momentum faktörü</small></td>
+            <td class="col-isin mono">IE00BP3QZ825<small>USD (Acc)</small></td>
+            <td class="col-bench">MSCI World Momentum Index</td>
+            <td class="col-ter"><span class="mono ter-value"><strong>%0,25</strong></span><small class="note-text">Resmi ürün kaynağındaki toplam gider oranı (yıllık).</small></td>
+            <td class="col-repl">Physical / Optimised (ihraççı sınıflaması)<small>Birikimli (Accumulating)</small></td>
+            <td class="col-fx">USD<small>Hedge&#x27;siz (Kur koruması yok; küresel gelişmiş ülke para birimleri ve USD riski taşır)</small></td>
+            <td class="col-ref"><small>IS3R (Deutsche Börse Xetra) · IWMO (London Stock Exchange) · IWFM (London Stock Exchange)</small><a href="https://www.ishares.com/uk/individual/en/products/270051/ishares-msci-world-momentum-factor-ucits-etf" target="_blank" rel="noopener noreferrer" class="link-pill">Kaynak ↗</a>
+            <small>Belge: tarih belirtilmemiş<br>Erişim: 2026-10-23T19:57:27+02:00</small>
+            <small>Ürün sayfasının genel yayın tarihi belirtilmemiştir; erişim zamanı ayrı kaydedildi. Broker işlem hattı doğrulanmadı.</small></td>
+        </tr><tr>
+            <td class="col-name"><strong>iShares Edge MSCI World Value Factor UCITS ETF USD (Acc)</strong><small>BlackRock Asset Management Ireland Limited / iShares · Gelişmiş piyasalar; value faktörü</small></td>
+            <td class="col-isin mono">IE00BP3QZB59<small>USD (Acc)</small></td>
+            <td class="col-bench">MSCI World Enhanced Value Index</td>
+            <td class="col-ter"><span class="mono ter-value"><strong>%0,25</strong></span><small class="note-text">Resmi ürün kaynağındaki toplam gider oranı (yıllık).</small></td>
+            <td class="col-repl">Physical / Replicated (ihraççı sınıflaması)<small>Birikimli (Accumulating)</small></td>
+            <td class="col-fx">USD<small>Hedge&#x27;siz (Kur koruması yok; küresel gelişmiş ülke para birimleri ve USD riski taşır)</small></td>
+            <td class="col-ref"><small>IS3S (Deutsche Börse Xetra) · IWVL (London Stock Exchange) · IWFV (London Stock Exchange)</small><a href="https://www.ishares.com/uk/individual/en/products/270048/ishares-msci-world-value-factor-ucits-etf" target="_blank" rel="noopener noreferrer" class="link-pill">Kaynak ↗</a>
+            <small>Belge: tarih belirtilmemiş<br>Erişim: 2026-10-23T19:57:27+02:00</small>
+            <small>Ürün sayfasının genel yayın tarihi belirtilmemiştir; erişim zamanı ayrı kaydedildi. Broker işlem hattı doğrulanmadı. İhraççı sayfasında 15 Aralık 2026 için bir kotasyon hattı duyurusu var; etkilenen borsa bu kontrolde belirlenemedi.</small></td>
+        </tr><tr>
+            <td class="col-name"><strong>State Street SPDR MSCI All Country World Investable Market UCITS ETF (Acc)</strong><small>State Street Global Advisors (SSGA) · Küresel hisse; gelişmiş + gelişen piyasalar</small></td>
+            <td class="col-isin mono">IE00B3YLTY66<small>Accumulating (Acc / thesaurierend)</small></td>
+            <td class="col-bench">MSCI ACWI IMI Index (MSCI All Country World Investable Market Index)</td>
+            <td class="col-ter"><span class="mono ter-value"><strong>%0,17</strong></span><small class="note-text">Resmi ürün kaynağındaki toplam gider oranı (yıllık).</small></td>
+            <td class="col-repl">Physical / Optimised (ihraççı sınıflaması)<small>Birikimli (Accumulating)</small></td>
+            <td class="col-fx">USD<small>Hedge&#x27;siz (Kur koruması yok; küresel hisse döviz riskini yansıtır)</small></td>
+            <td class="col-ref"><small>SPYI (Deutsche Börse) · IMID (London Stock Exchange) · IMIE (Euronext Paris)</small><a href="https://www.ssga.com/library-content/products/factsheets/etfs/emea/factsheet-emea-en_gb-spyi-gy.pdf" target="_blank" rel="noopener noreferrer" class="link-pill">Kaynak ↗</a>
+            <small>Belge: tarih belirtilmemiş<br>Erişim: 2026-10-23T19:57:27+02:00</small>
+            <small>Eylül 2026 factsheet; kotasyon tablosu sayfa 1. Tam belge günü bu kayıt için atanmadı. Broker işlem hattı doğrulanmadı.</small></td>
+        </tr></tbody></table></div>
+<p class="note">Referans borsa ve işlem kodları kullanıcının brokerdaki işlem hattını doğrulamaz. Baz para birimi, işlem para birimi ve hedge durumu ayrı alanlardır. Belge ve erişim tarihleri her fonun kaynağında gösterilir.</p></section>
+
+<section class="panel" id="arastirma"><div class="section-head"><div><h2>Günlük ETF araştırması</h2><p>Tarih: 2026-10-23 · Maruziyetler, ekonomik aktarım kanalları ve karşı kanıtlar</p></div><span class="badge badge-warn">GÜNCEL ARAŞTIRMA KAYDI</span></div>
+<p class="note">Doğrulama kısıtlı: Kapsam kısıtlı: bazı haber bağlantıları bu kontrolde açılamadı. PMI, Meta CAPEX, petrol/dolar ve güncel tahvil seviyesi iddiaları yeniden teyit edilmeden olgu olarak kullanılmadı. Bu kayıt kapsamlı bir günlük haber taraması değildir.</p><article class="research-summary-card">
+                <div class="eyebrow">MAKRO DURUM VE GÖZLEMLER</div>
+                <h3>Tarihli politika kararları; güncel piyasa yorumu sınırlı</h3>
+                <small class="meta-date">Gözlem dönemleri: Fed 16 Eylül 2026; ECB 10 Eylül 2026 kararı, 16 Eylül yürürlük tarihi</small>
+                <ul class="facts-list"><li><strong>Olgu:</strong> Fed, 16 Eylül 2026 kararında hedef aralığı %3,75–4,00 olarak belirledi. Bu sayı kararın tarihine aittir.</li><li><strong>Olgu:</strong> ECB, 10 Eylül 2026 kararında mevduat faizini 16 Eylül 2026 tarihinden geçerli olmak üzere %2,50 olarak belirledi.</li></ul>
+                <div class="macro-inference"><strong>Ekonomik Çıkarım:</strong> Faizler şirketlerin finansman maliyetini ve değerlemelerde kullanılan iskonto oranını etkileyebilir. Bu genel aktarım ilişkisinden bugünkü ETF yönü veya getiri olasılığı çıkarılmadı.</div>
+                <div class="research-sources"><a class="source-tag" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm" target="_blank" rel="noopener noreferrer">Federal Reserve — 16 Eylül 2026 kararı · yayın: 2026-09-16 · erişim: 2026-10-23T19:57:27+02:00</a><a class="source-tag" href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html" target="_blank" rel="noopener noreferrer">ECB — 10 Eylül 2026 kararı · yayın: 2026-09-10 · erişim: 2026-10-23T19:57:27+02:00</a></div>
+            </article><div class="research-grid"><article class="fund-research-card">
+                <div class="card-head">
+                    <div>
+                        <h4>State Street SPDR MSCI All Country World Investable Market UCITS ETF (Acc)</h4>
+                        <span class="mono tag">IE00B3YLTY66</span> <span class="tag">—</span>
+                    </div>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ne değişti?</span>
+                    <p>Eylül 2026 factsheet fonun MSCI ACWI IMI maruziyetini ve referans kotasyonlarını gösteriyor. Bu kontrolde yeni bir günlük fon olayı teyit edilmedi.</p>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ekonomik aktarım mekanizması:</span>
+                    <p>Küresel hisse maruziyetinde şirket kârları, iskonto oranları ve döviz hareketleri fiyatı etkileyebilir. Geniş şirket kapsamı ortak piyasa düşüşünü ortadan kaldırmaz.</p>
+                </div>
+                <div class="research-row warning-box">
+                    <span class="label">En güçlü karşı kanıt:</span>
+                    <p>Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.</p>
+                </div>
+                <div class="research-row check-box">
+                    <span class="label">Sonraki kontrol koşulu:</span>
+                    <p>Sonraki tarihli factsheet ile gerçek holdings değişimlerini karşılaştır; broker işlem hattını ayrı teyit et.</p>
+                </div>
+                <div class="research-sources"><a href="https://www.ssga.com/library-content/products/factsheets/etfs/emea/factsheet-emea-en_gb-spyi-gy.pdf" target="_blank" rel="noopener noreferrer" class="source-tag">Resmi ürün kaynağı · yayın: belirtilmemiş · erişim: 2026-10-23T19:57:27+02:00 ↗</a></div>
+            </article><article class="fund-research-card">
+                <div class="card-head">
+                    <div>
+                        <h4>iShares Core MSCI EM IMI UCITS ETF USD (Acc)</h4>
+                        <span class="mono tag">IE00BKM4GZ66</span> <span class="tag">—</span>
+                    </div>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ne değişti?</span>
+                    <p>İhraççı kaydı gelişen piyasalar IMI endeksini ve fiziksel / Replicated yöntemini teyit ediyor. Önceki nottaki güncel dolar, petrol ve tahvil seviyesi iddiaları bu kontrolde teyit edilemedi.</p>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ekonomik aktarım mekanizması:</span>
+                    <p>Gelişen piyasa şirketleri için döviz ve dış finansman koşulları, bölgesel talep ve sektör bileşimi farklı etkiler yaratabilir. Bu bir aktarım senaryosudur; ölçülmüş fon etkisi değildir.</p>
+                </div>
+                <div class="research-row warning-box">
+                    <span class="label">En güçlü karşı kanıt:</span>
+                    <p>Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.</p>
+                </div>
+                <div class="research-row check-box">
+                    <span class="label">Sonraki kontrol koşulu:</span>
+                    <p>Tarihli tam holdings ve aynı gözlem zamanına ait kur/faiz verisiyle aktarımı yeniden değerlendir.</p>
+                </div>
+                <div class="research-sources"><a href="https://www.ishares.com/uk/individual/en/products/264659/ishares-msci-emerging-markets-imi-ucits-etf" target="_blank" rel="noopener noreferrer" class="source-tag">Resmi ürün kaynağı · yayın: belirtilmemiş · erişim: 2026-10-23T19:57:27+02:00 ↗</a></div>
+            </article><article class="fund-research-card">
+                <div class="card-head">
+                    <div>
+                        <h4>iShares Edge MSCI World Momentum Factor UCITS ETF USD (Acc)</h4>
+                        <span class="mono tag">IE00BP3QZ825</span> <span class="tag">—</span>
+                    </div>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ne değişti?</span>
+                    <p>İhraççı ürün kaydı momentum endeksini gösteriyor. Güncel sepetin Meta CAPEX açıklamasından ölçülmüş etkisi veya günlük piyasa genişliği bu kontrolde hesaplanmadı.</p>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ekonomik aktarım mekanizması:</span>
+                    <p>Momentum faktörü fiyat eğilimlerinin sürekliliğine maruzdur. Liderlik hızla değişirse sepet önceki liderleri taşımaya devam edebilir; etki gerçek holdings ve yeniden dengeleme yöntemine bağlıdır.</p>
+                </div>
+                <div class="research-row warning-box">
+                    <span class="label">En güçlü karşı kanıt:</span>
+                    <p>Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.</p>
+                </div>
+                <div class="research-row check-box">
+                    <span class="label">Sonraki kontrol koşulu:</span>
+                    <p>Resmi endeks yöntemi ve tarihli holdings ile faktör ve şirket yoğunlaşmasını karşılaştır.</p>
+                </div>
+                <div class="research-sources"><a href="https://www.ishares.com/uk/individual/en/products/270051/ishares-msci-world-momentum-factor-ucits-etf" target="_blank" rel="noopener noreferrer" class="source-tag">Resmi ürün kaynağı · yayın: belirtilmemiş · erişim: 2026-10-23T19:57:27+02:00 ↗</a></div>
+            </article><article class="fund-research-card">
+                <div class="card-head">
+                    <div>
+                        <h4>iShares Edge MSCI World Value Factor UCITS ETF USD (Acc)</h4>
+                        <span class="mono tag">IE00BP3QZB59</span> <span class="tag">—</span>
+                    </div>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ne değişti?</span>
+                    <p>22 Ekim 2026 ihraççı sektör tablosunda bilgi teknolojisi %31,50, finansallar %15,52, enerji %4,29. Önceki dönemle ağırlık değişimi hesaplanmadı. 15 Aralık duyurusunun etkilenen borsası belirlenemedi.</p>
+                </div>
+                <div class="research-row">
+                    <span class="label">Ekonomik aktarım mekanizması:</span>
+                    <p>Ucuzluk faktörü yalnız bankacılık ve enerji üzerinden yorumlanamaz. Şirket kâr beklentilerindeki bozulma düşük çarpanları kalıcılaştırabilir; fiyat değişimi tek başına tezi doğrulamaz.</p>
+                </div>
+                <div class="research-row warning-box">
+                    <span class="label">En güçlü karşı kanıt:</span>
+                    <p>Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.</p>
+                </div>
+                <div class="research-row check-box">
+                    <span class="label">Sonraki kontrol koşulu:</span>
+                    <p>Tarihli tam holdings ve resmi kotasyon mektubunu incele; etkilenen borsa belli olduktan sonra broker hattıyla eşleştir.</p>
+                </div>
+                <div class="research-sources"><a href="https://www.ishares.com/uk/individual/en/products/270048/ishares-msci-world-value-factor-ucits-etf" target="_blank" rel="noopener noreferrer" class="source-tag">Resmi ürün kaynağı · yayın: belirtilmemiş · erişim: 2026-10-23T19:57:27+02:00 ↗</a></div>
+            </article></div><p class="note" style="margin-top:16px;"><em>Olguların kaynakları ve tarihleri ayrı gösterilir. Koşullu riskler ölçülmüş karşı kanıt değildir. Kişisel adet, maliyet, nakit veya getiri üretilmez.</em></p>
+</section>
+
+<section class="panel" id="piyasa"><div class="section-head"><div><h2>Piyasa bağlamı</h2><p>Önceki seans günlük verileri · portföy performansından ayrı</p></div></div><div class="market-grid"><article class="market-card"><div class="eyebrow">S&amp;P 500</div>
+                <div class="quote">7.663,43 <span>puan</span></div>
+                <div class="change down">-1,21 % <span>1 seans</span></div>
+                <p>5 seans: -1,04 %</p>
+                <div class="divider"></div><small>Kapanış: 2026-10-22<br>Tarihli günlük veri<br>
+                Çekim: 2026-10-23T17:41:19+00:00<br>America/New_York</small>
+                <a href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener noreferrer">Yahoo Finance ↗</a></article><article class="market-card"><div class="eyebrow">Nasdaq 100</div>
+                <div class="quote">28.958,69 <span>puan</span></div>
+                <div class="change down">-2,90 % <span>1 seans</span></div>
+                <p>5 seans: -3,26 %</p>
+                <div class="divider"></div><small>Kapanış: 2026-10-22<br>Tarihli günlük veri<br>
+                Çekim: 2026-10-23T17:41:19+00:00<br>America/New_York</small>
+                <a href="https://finance.yahoo.com/quote/%5ENDX/history/" target="_blank" rel="noopener noreferrer">Yahoo Finance ↗</a></article><article class="market-card"><div class="eyebrow">VIX</div>
+                <div class="quote">19,03 <span>puan</span></div>
+                <div class="change up">+2,35 puan <span>1 seans</span></div>
+                <p>5 seans: +2,57 puan</p>
+                <div class="divider"></div><small>Kapanış: 2026-10-22<br>Tarihli günlük veri<br>
+                Çekim: 2026-10-23T17:41:19+00:00<br>America/Chicago</small>
+                <a href="https://finance.yahoo.com/quote/%5EVIX/history/" target="_blank" rel="noopener noreferrer">Yahoo Finance ↗</a></article><article class="market-card"><div class="eyebrow">EUR / USD</div>
+                <div class="quote">1,1235 <span>USD / EUR</span></div>
+                <div class="change up">+0,07 % <span>1 seans</span></div>
+                <p>5 seans: +0,35 %</p>
+                <div class="divider"></div><small>Kapanış: 2026-10-22<br>Tarihli günlük veri<br>
+                Çekim: 2026-10-23T17:41:20+00:00<br>Europe/London</small>
+                <a href="https://finance.yahoo.com/quote/EURUSD%3DX/history/" target="_blank" rel="noopener noreferrer">Yahoo Finance ↗</a></article><article class="market-card"><div class="eyebrow">ABD 10 yıl nominal faiz</div>
+                <div class="quote">4,95 <span>%</span></div>
+                <div class="change down">-19,30 bp <span>1 seans</span></div>
+                <p>5 seans: -13,60 bp</p>
+                <div class="divider"></div><small>Kapanış: 2026-10-22<br>Tarihli günlük veri<br>
+                Çekim: 2026-10-23T17:41:20+00:00<br>America/Chicago</small>
+                <a href="https://finance.yahoo.com/quote/%5ETNX/history/" target="_blank" rel="noopener noreferrer">Yahoo Finance ↗</a></article><article class="market-card"><div class="eyebrow">ABD 5 yıl nominal faiz</div>
+                <div class="quote">4,77 <span>%</span></div>
+                <div class="change down">-20,40 bp <span>1 seans</span></div>
+                <p>5 seans: -13,10 bp</p>
+                <div class="divider"></div><small>Kapanış: 2026-10-22<br>Tarihli günlük veri<br>
+                Çekim: 2026-10-23T17:41:20+00:00<br>America/Chicago</small>
+                <a href="https://finance.yahoo.com/quote/%5EFVX/history/" target="_blank" rel="noopener noreferrer">Yahoo Finance ↗</a></article></div>
+<p class="note">Son indirme: 6/6 gösterge · 2026-10-23T17:41:20.236697+00:00</p><p class="note">İçinde bulunulan seansın günlük mumu dışarıda bırakılır; canlı fiyat gösterilmez. Endeks ve kur değişimleri dağıtımsız fiyat değişimidir. Faiz farkları baz puan (bp), VIX farkları puandır. 5 seans, son 6 günlük gözlemden hesaplanır. Bu göstergeler portföyüne atanmış bir benchmark değildir.</p><p>ETF araştırması: Doğrulama kısıtlı. Kayıt tarihi içeriğin doğrulandığı anlamına gelmez.</p></section>
+
+<div class="lower"><section class="panel" id="kayit"><h2>Hesap için eksik kayıtlar</h2><div class="missing"><div><strong>Güncel portföy değeri</strong><p>Adetler ve işlem borsaları doğrulanmadı.</p></div><div><strong>Günlük / aylık / yıllık portföy getirisi</strong><p>Tarihli değer serisi ve nakit hareketleri yok.</p></div><div><strong>Kâr / zarar</strong><p>Alış maliyetleri ve işlem geçmişi yok.</p></div><div><strong>Nakit bakiyesi</strong><p>Bakiye paylaşılmadı.</p></div></div><p class="note">İlk gerekli bilgiler: brokerda görünen ISIN, işlem borsası ve gerçek adet. Mevcut kayıt bu bilgiler gelene kadar ekran görüntüsü olarak korunur.</p></section>
+<section class="panel" id="kaynaklar"><h2>Resmi fon kaynakları</h2><p class="note">Doğrulanmış ürün sayfaları ve ihraççı kütüphaneleri</p><a class="source" href="https://www.ishares.com/uk/individual/en/products/264659/ishares-msci-emerging-markets-imi-ucits-etf" target="_blank" rel="noopener noreferrer">
+            <span>iShares Core MSCI EM IMI UCITS ETF USD (Acc)<small class="mono">IE00BKM4GZ66</small></span><span aria-hidden="true">↗</span></a><a class="source" href="https://www.ishares.com/uk/individual/en/products/270051/ishares-msci-world-momentum-factor-ucits-etf" target="_blank" rel="noopener noreferrer">
+            <span>iShares Edge MSCI World Momentum Factor UCITS ETF USD (Acc)<small class="mono">IE00BP3QZ825</small></span><span aria-hidden="true">↗</span></a><a class="source" href="https://www.ishares.com/uk/individual/en/products/270048/ishares-msci-world-value-factor-ucits-etf" target="_blank" rel="noopener noreferrer">
+            <span>iShares Edge MSCI World Value Factor UCITS ETF USD (Acc)<small class="mono">IE00BP3QZB59</small></span><span aria-hidden="true">↗</span></a><a class="source" href="https://www.ssga.com/library-content/kiids?country=uk&amp;documentType=kiid&amp;isin=ie00b3ylty66&amp;language=en&amp;ticker=spyi+gy" target="_blank" rel="noopener noreferrer">
+            <span>State Street SPDR MSCI All Country World Investable Market UCITS ETF (Acc)<small class="mono">IE00B3YLTY66</small></span><span aria-hidden="true">↗</span></a><p class="note">Kaynak bağlantıları güncel haber taraması anlamına gelmez. Haber ve tez araştırması ETF Yatırım Masası promptuyla veya kayıtlı araştırma dosyalarıyla yürütülür.</p></section></div>
+<footer><div>Rapor üretimi: 2026-10-23T20:02:01+02:00 · Europe/Berlin<br>Ekran kaydı: 2026-10-23 · Görüntüdeki fiyat zamanı: bilinmiyor · Araştırma kaydı: 2026-10-23</div><button type="button" onclick="window.print()">Yazdır / PDF</button></footer>
+</main></div></body></html>

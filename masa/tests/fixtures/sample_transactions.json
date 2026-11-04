@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "command": "broker.transactions",
+  "data": {
+    "account_id": "ACC_TEST_MASKED_01",
+    "portfolio_id": "PORT_TEST_MASKED_01",
+    "resolution": {
+      "account": "selected_context",
+      "portfolio": "selected_context"
+    },
+    "result": {
+      "account_id": "ACC_TEST_MASKED_01",
+      "count": 2,
+      "cursor": "CURSOR_TOKEN_ABC",
+      "items": [
+        {
+          "amount": -4.99,
+          "cash_transaction_type": "FEE",
+          "currency": "EUR",
+          "description": "Prime Fee",
+          "id": "TX_TEST_01",
+          "is_cancellation": false,
+          "last_event_datetime": "2026-09-16T00:00:00.000Z",
+          "status": "SETTLED",
+          "type": "CASH_TRANSACTION"
+        },
+        {
+          "amount": -195.494,
+          "currency": "EUR",
+          "description": "iShares Buy",
+          "id": "TX_TEST_02",
+          "is_cancellation": false,
+          "isin": "IE00BKM4GZ66",
+          "last_event_datetime": "2026-09-07T06:17:24.150Z",
+          "limit_price": 50.571,
+          "quantity": 4,
+          "side": "BUY",
+          "status": "SETTLED",
+          "type": "SECURITY_TRANSACTION"
+        }
+      ],
+      "portfolio_id": "PORT_TEST_MASKED_01",
+      "total": 2
+    }
+  }
+}

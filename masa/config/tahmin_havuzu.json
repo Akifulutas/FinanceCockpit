@@ -1,0 +1,99 @@
+{
+  "_aciklama": "Günlük Tahmin ve Uzlaşma Havuzu (5 ETF + 5 Hisse). Pzt-Cum 09:30 CET sabah tahmini, 17:40 CET akşam uzlaşması.",
+  "schema_version": 1,
+  "guncellenme_tarihi": "2026-10-31",
+  "etf": {
+    "IE00B3YLTY66": {
+      "ad": "SPDR MSCI ACWI IMI UCITS ETF",
+      "sembol": "SPYI",
+      "yahoo": "SPYI.DE",
+      "rol": "core",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "ETF"
+    },
+    "IE00BKM4GZ66": {
+      "ad": "iShares Core MSCI EM IMI UCITS ETF",
+      "sembol": "IS3N",
+      "yahoo": "IS3N.DE",
+      "rol": "core",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "ETF"
+    },
+    "IE00BP3QZ825": {
+      "ad": "iShares Edge MSCI World Momentum Factor UCITS ETF",
+      "sembol": "IS3R",
+      "yahoo": "IS3R.DE",
+      "rol": "core",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "ETF"
+    },
+    "IE00BP3QZB59": {
+      "ad": "iShares Edge MSCI World Value Factor UCITS ETF",
+      "sembol": "IS3S",
+      "yahoo": "IS3S.DE",
+      "rol": "core",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "ETF"
+    },
+    "IE00B4L5Y983": {
+      "ad": "iShares Core MSCI World UCITS ETF",
+      "sembol": "EUNL",
+      "yahoo": "EUNL.DE",
+      "rol": "watchlist",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "ETF"
+    }
+  },
+  "hisse": {
+    "US0378331005": {
+      "ad": "Apple Inc.",
+      "sembol": "AAPL",
+      "yahoo": "APC.DE",
+      "rol": "equity",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "EQUITY"
+    },
+    "US5949181045": {
+      "ad": "Microsoft Corporation",
+      "sembol": "MSFT",
+      "yahoo": "MSF.DE",
+      "rol": "equity",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "EQUITY"
+    },
+    "US67066G1040": {
+      "ad": "NVIDIA Corporation",
+      "sembol": "NVDA",
+      "yahoo": "NVD.DE",
+      "rol": "equity",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "EQUITY"
+    },
+    "NL0010273215": {
+      "ad": "ASML Holding N.V.",
+      "sembol": "ASML",
+      "yahoo": "ASML.AS",
+      "rol": "equity",
+      "mic": "XAMS",
+      "para_birimi": "EUR",
+      "asset_type": "EQUITY"
+    },
+    "DE0007164600": {
+      "ad": "SAP SE",
+      "sembol": "SAP",
+      "yahoo": "SAP.DE",
+      "rol": "equity",
+      "mic": "XETR",
+      "para_birimi": "EUR",
+      "asset_type": "EQUITY"
+    }
+  }
+}

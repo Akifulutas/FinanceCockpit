@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AyarGosterResponse",
+  "type": "object",
+  "required": ["schema_version", "portfoy", "politika", "modeller", "model_erisim", "broker"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "portfoy": {
+      "type": "object",
+      "required": ["araclar", "cekirdek_isin", "hedef_agirliklar"],
+      "properties": {
+        "araclar": { "type": "object" },
+        "cekirdek_isin": { "type": "string" },
+        "hedef_agirliklar": { "type": "object" },
+        "hedef_durumu": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "politika": {
+      "type": "object",
+      "required": ["durum", "tolerans_mutlak", "tolerans_goreli", "min_emir_eur"],
+      "properties": {
+        "_aciklama": { "type": "string" },
+        "durum": { "type": "string" },
+        "tolerans_mutlak": { "type": "number" },
+        "tolerans_goreli": { "type": "number" },
+        "trend_uyari": { "type": "number" },
+        "dusus_inceleme": { "type": "number" },
+        "faktor_geri_kalma_puan": { "type": "number" },
+        "makas_uyari_yuzde": { "type": "number" },
+        "min_emir_eur": { "type": "number" },
+        "nakit_hedefi": { "type": "number" },
+        "ucits_kontrolu": { "type": "boolean" },
+        "tarama": { "type": "object" },
+        "yedek_saklama": {
+          "type": "object",
+          "required": ["gunluk", "haftalik", "aylik"],
+          "properties": {
+            "gunluk": { "type": "integer" },
+            "haftalik": { "type": "integer" },
+            "aylik": { "type": "integer" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "modeller": { "type": "object" },
+    "model_erisim": {
+      "type": "object",
+      "required": ["providers", "chatgpt_auth_exists"],
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "chatgpt_auth_exists": { "type": "boolean" },
+        "chatgpt_auth_path": { "type": "string" },
+        "google_model": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "broker": {
+      "type": "object",
+      "required": ["cli_path", "cli_exists"],
+      "properties": {
+        "cli_path": { "type": "string" },
+        "cli_exists": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

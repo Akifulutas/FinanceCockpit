@@ -1,0 +1,128 @@
+# ==============================================================================
+# ETF Yatırım Masası — Repository Exclusion Rules (.gitignore)
+# Protects SQLite runtime databases, credentials, private data, sessions & caches
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Active Application State & Databases (Faz 0 & Faz 1)
+# ------------------------------------------------------------------------------
+# Active SQLite database and private storage
+masa/var/
+masa/var/private/
+masa.db
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Generic private storage directories
+var/
+private/
+**/var/private/
+data/
+arsiv/
+.agents/teamwork/
+
+# ------------------------------------------------------------------------------
+# 2. Broker Sessions, Auth Keys & Local Credentials
+# ------------------------------------------------------------------------------
+# Scalable Capital CLI and generic broker session files
+.scalable/
+*.session
+session.json
+auth.json
+tokens.json
+credentials.json
+keyring.json
+
+# Environment configuration files
+.env
+.env.*
+!.env.example
+*.env
+*.secret
+
+# Cryptographic private keys and certificates
+*.key
+*.pem
+*.cert
+*.p12
+*.pfx
+*.pkcs12
+id_rsa*
+id_ecdsa*
+id_ed25519*
+
+# ------------------------------------------------------------------------------
+# 3. Python Virtual Environments, Bytecode & Build Artifacts
+# ------------------------------------------------------------------------------
+.venv/
+masa/.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+.build/
+macos/.build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ------------------------------------------------------------------------------
+# 4. Testing, Coverage & Linter Caches
+# ------------------------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+
+# ------------------------------------------------------------------------------
+# 5. Operating System & IDE Artifacts
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ------------------------------------------------------------------------------
+# 6. Runtime Logs & Temporary Files
+# ------------------------------------------------------------------------------
+*.log
+logs/
+*.tmp
+*.bak
+*.orig
+
+# ------------------------------------------------------------------------------
+# 7. Private Reports and Personal Data
+# ------------------------------------------------------------------------------
+reports/canli-portfoy-raporu-*.md
+Yatirim-Masasi/veri/
+

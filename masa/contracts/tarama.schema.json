@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaramaResponse",
+  "type": "object",
+  "required": ["schema_version", "pool_count", "candidates"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "pool_count": { "type": "integer" },
+    "warning": { "type": ["string", "null"] },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["isin", "name", "label", "score", "reasons"],
+        "properties": {
+          "isin": { "type": "string" },
+          "name": { "type": "string" },
+          "label": { "type": "string" },
+          "score": { "type": ["number", "null"] },
+          "reasons": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

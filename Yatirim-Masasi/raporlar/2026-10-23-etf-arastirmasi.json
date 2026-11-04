@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "generated_at": "2026-10-23T19:57:27+02:00",
+  "timezone": "Europe/Berlin",
+  "scope": "Mevcut dört ETF için kaynak kontrolü ve koşullu maruziyet değerlendirmesi",
+  "verification_status": "partial",
+  "verification_note": "Kapsam kısıtlı: bazı haber bağlantıları bu kontrolde açılamadı. PMI, Meta CAPEX, petrol/dolar ve güncel tahvil seviyesi iddiaları yeniden teyit edilmeden olgu olarak kullanılmadı. Bu kayıt kapsamlı bir günlük haber taraması değildir.",
+  "macro_summary": {
+    "headline": "Tarihli politika kararları; güncel piyasa yorumu sınırlı",
+    "observation_dates": "Fed 16 Eylül 2026; ECB 10 Eylül 2026 kararı, 16 Eylül yürürlük tarihi",
+    "facts": [
+      "Fed, 16 Eylül 2026 kararında hedef aralığı %3,75–4,00 olarak belirledi. Bu sayı kararın tarihine aittir.",
+      "ECB, 10 Eylül 2026 kararında mevduat faizini 16 Eylül 2026 tarihinden geçerli olmak üzere %2,50 olarak belirledi."
+    ],
+    "sources": [
+      {
+        "title": "Federal Reserve — 16 Eylül 2026 kararı",
+        "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+        "published_at": "2026-09-16",
+        "retrieved_at": "2026-10-23T19:57:27+02:00"
+      },
+      {
+        "title": "ECB — 10 Eylül 2026 kararı",
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html",
+        "published_at": "2026-09-10",
+        "retrieved_at": "2026-10-23T19:57:27+02:00"
+      }
+    ],
+    "economic_inference": "Faizler şirketlerin finansman maliyetini ve değerlemelerde kullanılan iskonto oranını etkileyebilir. Bu genel aktarım ilişkisinden bugünkü ETF yönü veya getiri olasılığı çıkarılmadı."
+  },
+  "funds": [
+    {
+      "isin": "IE00B3YLTY66",
+      "fund_name": "State Street SPDR MSCI All Country World Investable Market UCITS ETF (Acc)",
+      "what_changed": "Eylül 2026 factsheet fonun MSCI ACWI IMI maruziyetini ve referans kotasyonlarını gösteriyor. Bu kontrolde yeni bir günlük fon olayı teyit edilmedi.",
+      "economic_transmission": "Küresel hisse maruziyetinde şirket kârları, iskonto oranları ve döviz hareketleri fiyatı etkileyebilir. Geniş şirket kapsamı ortak piyasa düşüşünü ortadan kaldırmaz.",
+      "counter_evidence": "Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.",
+      "next_check": "Sonraki tarihli factsheet ile gerçek holdings değişimlerini karşılaştır; broker işlem hattını ayrı teyit et.",
+      "sources": [
+        {
+          "title": "Resmi ürün kaynağı",
+          "url": "https://www.ssga.com/library-content/products/factsheets/etfs/emea/factsheet-emea-en_gb-spyi-gy.pdf",
+          "published_at": null,
+          "retrieved_at": "2026-10-23T19:57:27+02:00"
+        }
+      ]
+    },
+    {
+      "isin": "IE00BKM4GZ66",
+      "fund_name": "iShares Core MSCI EM IMI UCITS ETF USD (Acc)",
+      "what_changed": "İhraççı kaydı gelişen piyasalar IMI endeksini ve fiziksel / Replicated yöntemini teyit ediyor. Önceki nottaki güncel dolar, petrol ve tahvil seviyesi iddiaları bu kontrolde teyit edilemedi.",
+      "economic_transmission": "Gelişen piyasa şirketleri için döviz ve dış finansman koşulları, bölgesel talep ve sektör bileşimi farklı etkiler yaratabilir. Bu bir aktarım senaryosudur; ölçülmüş fon etkisi değildir.",
+      "counter_evidence": "Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.",
+      "next_check": "Tarihli tam holdings ve aynı gözlem zamanına ait kur/faiz verisiyle aktarımı yeniden değerlendir.",
+      "sources": [
+        {
+          "title": "Resmi ürün kaynağı",
+          "url": "https://www.ishares.com/uk/individual/en/products/264659/ishares-msci-emerging-markets-imi-ucits-etf",
+          "published_at": null,
+          "retrieved_at": "2026-10-23T19:57:27+02:00"
+        }
+      ]
+    },
+    {
+      "isin": "IE00BP3QZ825",
+      "fund_name": "iShares Edge MSCI World Momentum Factor UCITS ETF USD (Acc)",
+      "what_changed": "İhraççı ürün kaydı momentum endeksini gösteriyor. Güncel sepetin Meta CAPEX açıklamasından ölçülmüş etkisi veya günlük piyasa genişliği bu kontrolde hesaplanmadı.",
+      "economic_transmission": "Momentum faktörü fiyat eğilimlerinin sürekliliğine maruzdur. Liderlik hızla değişirse sepet önceki liderleri taşımaya devam edebilir; etki gerçek holdings ve yeniden dengeleme yöntemine bağlıdır.",
+      "counter_evidence": "Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.",
+      "next_check": "Resmi endeks yöntemi ve tarihli holdings ile faktör ve şirket yoğunlaşmasını karşılaştır.",
+      "sources": [
+        {
+          "title": "Resmi ürün kaynağı",
+          "url": "https://www.ishares.com/uk/individual/en/products/270051/ishares-msci-world-momentum-factor-ucits-etf",
+          "published_at": null,
+          "retrieved_at": "2026-10-23T19:57:27+02:00"
+        }
+      ]
+    },
+    {
+      "isin": "IE00BP3QZB59",
+      "fund_name": "iShares Edge MSCI World Value Factor UCITS ETF USD (Acc)",
+      "what_changed": "22 Ekim 2026 ihraççı sektör tablosunda bilgi teknolojisi %31,50, finansallar %15,52, enerji %4,29. Önceki dönemle ağırlık değişimi hesaplanmadı. 15 Aralık duyurusunun etkilenen borsası belirlenemedi.",
+      "economic_transmission": "Ucuzluk faktörü yalnız bankacılık ve enerji üzerinden yorumlanamaz. Şirket kâr beklentilerindeki bozulma düşük çarpanları kalıcılaştırabilir; fiyat değişimi tek başına tezi doğrulamaz.",
+      "counter_evidence": "Bu kontrolde tarihli sepet karşılaştırmasından bağımsız bir karşı kanıt ölçülmedi; aktarım anlatısı tek başına kanıt sayılmaz.",
+      "next_check": "Tarihli tam holdings ve resmi kotasyon mektubunu incele; etkilenen borsa belli olduktan sonra broker hattıyla eşleştir.",
+      "sources": [
+        {
+          "title": "Resmi ürün kaynağı",
+          "url": "https://www.ishares.com/uk/individual/en/products/270048/ishares-msci-world-value-factor-ucits-etf",
+          "published_at": null,
+          "retrieved_at": "2026-10-23T19:57:27+02:00"
+        }
+      ]
+    }
+  ],
+  "disclaimer": "Olguların kaynakları ve tarihleri ayrı gösterilir. Koşullu riskler ölçülmüş karşı kanıt değildir. Kişisel adet, maliyet, nakit veya getiri üretilmez."
+}

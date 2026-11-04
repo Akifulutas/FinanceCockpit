@@ -1,0 +1,30 @@
+{
+  "_aciklama": "Pozisyon rolleri, Yahoo sembolleri (yalnız TradingAgents için) ve isteğe bağlı hedef ağırlıklar. Hedefler boşsa yeniden dengeleme planı üretilmez. Örnek: \"hedef_agirliklar\": {\"IE00B3YLTY66\": 0.45, \"IE00BKM4GZ66\": 0.20, \"IE00BP3QZ825\": 0.20, \"IE00BP3QZB59\": 0.15}",
+  "araclar": {
+    "IE00B3YLTY66": {
+      "rol": "Çekirdek küresel geniş piyasa (ACWI IMI)",
+      "tur": "ETF",
+      "yahoo": "SPYI.DE"
+    },
+    "IE00BKM4GZ66": {
+      "rol": "Gelişmekte olan piyasalar (EM IMI)",
+      "tur": "ETF",
+      "yahoo": "IS3N.DE"
+    },
+    "IE00BP3QZ825": {
+      "rol": "Momentum faktörü (MSCI World)",
+      "tur": "ETF",
+      "yahoo": "IS3R.DE",
+      "faktor": true
+    },
+    "IE00BP3QZB59": {
+      "rol": "Değer faktörü (MSCI World)",
+      "tur": "ETF",
+      "yahoo": "IS3S.DE",
+      "faktor": true
+    }
+  },
+  "cekirdek_isin": "IE00B3YLTY66",
+  "hedef_agirliklar": {},
+  "hedef_durumu": "ONAYLANMADI — hedef ağırlıkları siz yazana kadar plan üretilmez"
+}

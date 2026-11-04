@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "command": "broker.holdings",
+  "data": {
+    "account_id": "ACC_TEST_MASKED_01",
+    "portfolio_id": "PORT_TEST_MASKED_01",
+    "resolution": {
+      "account": "selected_context",
+      "portfolio": "selected_context"
+    },
+    "result": {
+      "account_id": "ACC_TEST_MASKED_01",
+      "count": 2,
+      "items": [
+        {
+          "blocked_quantity": 0,
+          "fifo_price": 11.593165,
+          "isin": "IE00B3YLTY66",
+          "name": "SPDR MSCI ACWI IMI",
+          "pending_quantity": 0,
+          "quantity": 158,
+          "quote_currency": "EUR",
+          "quote_is_outdated": false,
+          "quote_mid_price": 11.666,
+          "quote_timestamp_utc": "2026-10-30T09:30:33.102Z",
+          "security_type": "ETF",
+          "valuation": 1843.23,
+          "valuation_currency": "EUR"
+        },
+        {
+          "blocked_quantity": 0,
+          "fifo_price": 48.111364,
+          "isin": "IE00BKM4GZ66",
+          "name": "iShares Core MSCI EM IMI",
+          "pending_quantity": 0,
+          "quantity": 22,
+          "quote_currency": "EUR",
+          "quote_is_outdated": false,
+          "quote_mid_price": 44.9965,
+          "quote_timestamp_utc": "2026-10-30T09:30:34.264Z",
+          "security_type": "ETF",
+          "valuation": 989.92,
+          "valuation_currency": "EUR"
+        }
+      ],
+      "portfolio_id": "PORT_TEST_MASKED_01"
+    }
+  }
+}

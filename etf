@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+ETF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ETF_PYTHON="$ETF_DIR/.venv/bin/python"
+if [[ ! -x "$ETF_PYTHON" ]]; then
+  ETF_PYTHON="$(command -v python3 || true)"
+fi
+if [[ -z "$ETF_PYTHON" ]]; then
+  echo "ETF raporu için Python bulunamadı." >&2
+  exit 1
+fi
+exec "$ETF_PYTHON" "$ETF_DIR/.agents/skills/portfolio-intelligence/scripts/cli.py" "$@"

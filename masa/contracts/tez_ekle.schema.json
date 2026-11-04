@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TezEkleRequest",
+  "type": "object",
+  "required": ["isin", "baslik", "ozet", "gerekce", "tetikleyiciler"],
+  "properties": {
+    "isin": { "type": "string" },
+    "baslik": { "type": "string" },
+    "ozet": { "type": "string" },
+    "gerekce": { "type": "string" },
+    "kategori": { "type": "string" },
+    "vade": { "type": "string" },
+    "tetikleyiciler": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2
+    },
+    "kanitlar": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "karsi_gorus": { "type": ["string", "null"] },
+    "hedef_agirlik": { "type": ["number", "string", "null"] },
+    "sonraki_kontrol": { "type": ["string", "null"] },
+    "yazar": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

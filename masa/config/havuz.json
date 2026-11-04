@@ -1,0 +1,24 @@
+{
+  "_aciklama": "Firsat taramasi havuzu. ISIN'leri ekleyip cikarabilirsiniz. Fiyat ve gecmis yalniz Scalable CLI'den cekilir; yahoo sembolu yalniz TradingAgents derin analizi icindir. Scalable'da bulunamayan ISIN raporda belirtilir.",
+  "etf": {
+    "IE00B4L5Y983": {"ad": "iShares Core MSCI World", "yahoo": "EUNL.DE"},
+    "IE00BK5BQT80": {"ad": "Vanguard FTSE All-World (Acc)", "yahoo": "VWCE.DE"},
+    "IE00B5BMR087": {"ad": "iShares Core S&P 500", "yahoo": "SXR8.DE"},
+    "IE00B4K48X80": {"ad": "iShares Core MSCI Europe", "yahoo": "SXR7.DE"},
+    "IE00BKM4GZ66": {"ad": "iShares Core MSCI EM IMI", "yahoo": "IS3N.DE"},
+    "IE00BP3QZ601": {"ad": "iShares Edge MSCI World Quality Factor", "yahoo": "IS3Q.DE"},
+    "IE00BP3QZ825": {"ad": "iShares Edge MSCI World Momentum Factor", "yahoo": "IS3R.DE"},
+    "IE00BP3QZB59": {"ad": "iShares Edge MSCI World Value Factor", "yahoo": "IS3S.DE"},
+    "IE00BF4RFH31": {"ad": "iShares MSCI World Small Cap", "yahoo": "IUSN.DE"}
+  },
+  "hisse": {
+    "US0378331005": {"ad": "Apple", "yahoo": "AAPL"},
+    "US5949181045": {"ad": "Microsoft", "yahoo": "MSFT"},
+    "US67066G1040": {"ad": "NVIDIA", "yahoo": "NVDA"},
+    "US02079K3059": {"ad": "Alphabet A", "yahoo": "GOOGL"},
+    "US0231351067": {"ad": "Amazon", "yahoo": "AMZN"},
+    "DE0007164600": {"ad": "SAP", "yahoo": "SAP.DE"},
+    "NL0010273215": {"ad": "ASML", "yahoo": "ASML.AS"},
+    "DE0007236101": {"ad": "Siemens", "yahoo": "SIE.DE"}
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "version": "v1.0",
+  "created_at": "2026-10-31T07:00:00Z",
+  "tasks": {
+    "table_extraction": [
+      {
+        "id": "tbl_01",
+        "input": "Holding Details: Apple Inc. (AAPL) US0378331005 weight 7.25%, Microsoft Corp (MSFT) US5949181045 weight 6.10%",
+        "expected": [
+          {"ticker": "AAPL", "isin": "US0378331005", "weight_pct": "7.25"},
+          {"ticker": "MSFT", "isin": "US5949181045", "weight_pct": "6.10"}
+        ],
+        "is_critical": false
+      },
+      {
+        "id": "tbl_02",
+        "input": "Holdings list: NVIDIA Corp (NVDA) US67066G1040 5.40%, Amazon.com (AMZN) US0231351067 3.80%",
+        "expected": [
+          {"ticker": "NVDA", "isin": "US67066G1040", "weight_pct": "5.40"},
+          {"ticker": "AMZN", "isin": "US0231351067", "weight_pct": "3.80"}
+        ],
+        "is_critical": false
+      }
+    ],
+    "claim_source_matching": [
+      {
+        "id": "clm_01",
+        "claim": "Fonun toplam gider oranı yıllık %0.12 seviyesindedir.",
+        "source": "Factsheet: Toplam Gider Oranı (TER) yıllık %0.12 olarak tahakkuk ettirilir.",
+        "quote": "%0.12",
+        "expected_match": true,
+        "is_critical": false
+      },
+      {
+        "id": "clm_02",
+        "claim": "Fon yöneticisi yılda iki kez temettü dağıtmaktadır.",
+        "source": "Prospectus: Fon birikimli (accumulating) pay sınıfıdır, temettü dağıtımı yapılmaz.",
+        "quote": "temettü dağıtımı yapılmaz",
+        "expected_match": false,
+        "is_critical": false
+      }
+    ],
+    "flawed_report_detection": [
+      {
+        "id": "flw_01_critical",
+        "report": "ISIN IE00B4L5Y983 fonunun güncel net aktif değeri 450.00 EUR olup yıllık TER oranı %4.50'dir.",
+        "sealed_metrics": {"mid_price": "100.04", "ter_pct": "0.12"},
+        "expected_status": "NEEDS_REVIEW",
+        "is_critical": true,
+        "description": "Kritik bilerek yerleştirilmiş 10x hatalı fiyat ve TER içeren rapor kesinlikle reddedilmelidir."
+      },
+      {
+        "id": "flw_02_clean",
+        "report": "ISIN IE00B4L5Y983 fonunun mühürlü orta fiyatı 100.04 EUR ve gider oranı %0.12 olarak teyit edilmiştir.",
+        "sealed_metrics": {"mid_price": "100.04", "ter_pct": "0.12"},
+        "expected_status": "CODE_CHECKED",
+        "is_critical": false,
+        "description": "Hatasız ve mühürlü metriklerle tam uyumlu rapor onaylanmalıdır."
+      }
+    ],
+    "turkish_semantics": [
+      {
+        "id": "turk_01",
+        "input": "Fon pay dağılımı ve nakit mutabakatı",
+        "expected_terms": ["pay dağılımı", "nakit mutabakatı"],
+        "forbidden_terms": ["stock share split", "cash reconciliation english"],
+        "is_critical": false
+      },
+      {
+        "id": "turk_02",
+        "input": "Toplam gider oranı ve takip farkı analizi",
+        "expected_terms": ["toplam gider oranı", "takip farkı"],
+        "forbidden_terms": ["TER English only", "tracking error only"],
+        "is_critical": false
+      }
+    ]
+  }
+}
